@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	if len(os.Args) < 2 {
+		log.Fatalf("no website provided")
+	} else if len(os.Args) > 2 {
+		log.Fatalf("too many arguments provided")
+	}
+	baseURL := os.Args[1]
+	fmt.Printf("starting crawl of: %s\n", baseURL)
 }
